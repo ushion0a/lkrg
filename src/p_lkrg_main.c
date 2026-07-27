@@ -29,6 +29,7 @@ unsigned int pint_validate = 1;
 unsigned int pint_enforce = 1;
 unsigned int pcfi_validate = 2;
 unsigned int pcfi_enforce = 1;
+unsigned int mobile_mode = 0;
 unsigned int umh_validate = 1;
 unsigned int umh_enforce = 1;
 #if defined(CONFIG_X86)
@@ -77,6 +78,7 @@ p_ro_page p_ro = {
       .p_umh_enforce = 1,                 // umh_enforce
       .p_msr_validate = 0,                // msr_validate
       .p_pcfi_validate = 2,               // pcfi_validate
+      .p_mobile_mode = 0,                 // mobile_mode
       .p_pcfi_enforce = 1,                // pcfi_enforce
       /* Profiles */
       .p_profile_validate = 3,            // profile_validate
@@ -280,6 +282,9 @@ static void p_parse_module_params(void) {
    } else {
       P_CTRL(p_block_modules) = block_modules;
    }
+
+   /* mobile_mode */
+   P_CTRL(p_mobile_mode) = mobile_mode > 2 ? 2 : mobile_mode;
 
    /* kint_validate */
    if (kint_validate > 3) {
@@ -776,6 +781,8 @@ module_param(heartbeat, uint, 0000);
 MODULE_PARM_DESC(heartbeat, "heartbeat [0 (don't print) is default]");
 module_param(block_modules, uint, 0000);
 MODULE_PARM_DESC(block_modules, "block_modules [0 (don't block) is default]");
+module_param(mobile_mode, uint, 0000);
+MODULE_PARM_DESC(mobile_mode, "mobile_mode [0 (full hooks) is default; 1 skips generic_permission and __queue_work; 2 additionally skips capable and scm_send; reload required to restore skipped hooks]");
 module_param(interval, uint, 0000);
 MODULE_PARM_DESC(interval, "interval [15 seconds is default]");
 module_param(kint_validate, uint, 0000);
