@@ -216,9 +216,6 @@ typedef struct _p_lkrg_global_symbols_structure {
 #endif
    int (*p___kernel_text_address)(unsigned long p_addr);
 #ifdef CONFIG_SECURITY_SELINUX
-#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 6, 0)
-   int *p_selinux_enabled;
-#endif
 #ifdef P_SELINUX_VERIFY
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,17,0)
    struct p_selinux_state *p_selinux_state;
