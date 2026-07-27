@@ -782,7 +782,7 @@ MODULE_PARM_DESC(heartbeat, "heartbeat [0 (don't print) is default]");
 module_param(block_modules, uint, 0000);
 MODULE_PARM_DESC(block_modules, "block_modules [0 (don't block) is default]");
 module_param(mobile_mode, uint, 0000);
-MODULE_PARM_DESC(mobile_mode, "mobile_mode [0 (full hooks) is default; 1 skips generic_permission and __queue_work; 2 additionally skips capable and scm_send; reload required to restore skipped hooks]");
+MODULE_PARM_DESC(mobile_mode, "mobile_mode [0 (full hooks) is default; 1 skips generic_permission and __queue_work; 2 additionally skips capable, scm_send, notifier-triggered integrity scans, and dynamic-code hash-sync hooks when kint_validate=0; reload required to restore skipped hooks]");
 module_param(interval, uint, 0000);
 MODULE_PARM_DESC(interval, "interval [15 seconds is default]");
 module_param(kint_validate, uint, 0000);
