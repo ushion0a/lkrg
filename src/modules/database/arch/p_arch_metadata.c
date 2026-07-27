@@ -42,9 +42,9 @@ int p_register_arch_metadata(void) {
 
    P_SYM_INIT(core_kernel_text)
 
-   if (P_CTRL(p_mobile_mode) >= 2 && !P_CTRL(p_kint_validate)) {
+   if (P_CTRL(p_skip_hash_sync) && !P_CTRL(p_kint_validate)) {
       p_print_log(P_LOG_WATCH,
-                  "Skipping dynamic-code hash-sync hooks (mobile_mode=2, kint_validate=0); reload LKRG to enable them");
+                  "Skipping dynamic-code hash-sync hooks (skip_hash_sync=1, kint_validate=0); reload LKRG to enable them");
       return P_LKRG_SUCCESS;
    }
 

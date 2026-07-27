@@ -164,6 +164,7 @@ typedef struct _p_lkrg_global_conf_structure {
 #endif
    unsigned int p_pcfi_validate;
    unsigned int p_mobile_mode;
+   unsigned int p_skip_hash_sync;
    unsigned int p_pint_validate;
    unsigned int p_kint_validate;
    unsigned int p_log_level;
